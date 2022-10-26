@@ -1,12 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Data to Graph Converter</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    
+	<ul>
+		<li>
+			<a href = "index.html">Home</a>
+		</li>
+		<li>
+			<a href = "page2.html">Page 2</a>
+		</li>
+	</ul>
+	<h1>Data to Graph Converter</h1>
+	<h4>Upload your .csv file to turn it into a visible graph to display your information!</h4>
+	<form id="fileForm">
+		<input type="file" id="csvFile" accept=".csv" hidden />
+		<button type="button" class="fileButton" id="fileButton" onclick="document.getElementById('csvFile').click()">Add .csv file</button>
+		<!-- <label class="fileButton" for="csvFile">Add .csv file</label> -->
+		<span class="fileChosen" id="fileChosen">No file added</span>
+		<input class="submit" type="submit" value="Submit" />
+		<script>
+			//if submit is true, move to page 2
+		</script>
+	</form>
+	
+	<!--<img src = "https://toppng.com/uploads/preview/blue-round-button-11550128848m21vyjeicp.png"> (How to add a pic)-->
+	
+	<!-- Import chart.js through cdnjs -->
+	<!-- !!!Don't know if this is the correct place/usage of this code!!! -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+	
+	 <!--
+	  This script places a badge on your repl's full-browser view back to your repl's cover
+	  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+	  teal, blue, blurple, magenta, pink!
+	  -->
+	<script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
+	 <script src="script.js"></script>
+	
 </body>
+
 </html>
