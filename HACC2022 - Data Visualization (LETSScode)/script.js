@@ -4,16 +4,15 @@
 const fileForm = document.getElementById('fileForm');
 const csvFile = document.getElementById('csvFile');
 const fileChosen = document.getElementById('fileChosen');
-let data; //
+var data; //data[0] = header elements, data[1~] = data
+			//ex. data[0][0] = age, data[1][0] = 18
+var csvFileAdded = false;
+var csvFileSubmitted = false;
 
-//csvFile.addEventListener('change', function () {
-//	fileChosen.textContext = this.files[0].name;
-//})
-$(document).ready(function () {
-	$("#fileButton").click(function () {
-		fileChosen.textContext = this.files[0].name;
-	})
-});
+csvFile.addEventListener('change', function () {
+	fileChosen.innerHTML = csvFile.files.item(0).name;
+	csvFileAdded = true;
+})
 
 fileForm.addEventListener('submit', function (e) {
 	e.preventDefault();
@@ -25,19 +24,33 @@ fileForm.addEventListener('submit', function (e) {
 		data = dataCsv;
 	};
 	reader.readAsText(input);
+	submitted.innerHTML = "Submitted";
+	if (typeof data != 'undefined') {
+		csvFileSubmitted = true;
+	}
 	console.log(data);
+	console.log(data[0]);
+	console.log(data[0][0]);
 })
 
-function csvToArray(str, delimiter=",") {
-	const classNames = str.slice(0, str.indexOf("\n")).split(delimiter);
-	const rows = str.slice(str.indexOf("\n")+1).split("\n");
-	const array = rows.map(function (row) {
-		const dataCsv = row.split(delimiter);
-		const el = classNames.reduce(function (object, header, index) {
-			object[header] = dataCsv[index];
-			return object;
-		}, {});
-		return el;
-	});
+function csvToArray(csv, delimiter=",") {
+	var array = [];
+	const rows = csv.split("\n");
+	for (var i = 0; i < rows.length; i++) {
+		var elements = rows[i].split(delimiter);
+		array[i] = elements;
+	}
 	return array;
+}
+
+function changePage(appear, hide, ignore=false) {
+	if ((csvFileAdded && csvFileSubmitted) || (ignore)) {
+		if (ignore) {
+			csvFileAdded = false;
+			csvFileSubmitted = false;
+		}
+		document.getElementById(appear).style.display = "block";
+		document.getElementById(hide).style.display = "none";
+		return false;
+	}
 }
