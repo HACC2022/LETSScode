@@ -9,14 +9,14 @@
 </head>
 
 <body>
+<!-- Page 1 -->
 	<div id="index">
 		<a href="#" onclick="return changePage('page2', 'index', true);">Page 2</a>
 		<h1>Data to Graph Converter</h1>
-		<h4>Upload your .csv file to turn it into a visible graph to display your information!</h4>
+		<h4>Upload your .csv file to turn it into a visible graph to display your information! Add data file, double click the submit button, and proceed to the next page by pressing the last button.</h4>
 		<form id="fileForm">
 			<input type="file" id="csvFile" accept=".csv" hidden />
-			<button type="button" class="fileButton" id="fileButton" onclick="document.getElementById('csvFile').click()">Add .csv file</button>
-			<!-- <label class="fileButton" for="csvFile">Add .csv file</label> -->
+			<button type="button" class="fileButton" id="fileButton" onclick="document.getElementById('csvFile').click()">Add .csv File</button>
 			<span class="fileChosen" id="fileChosen">No file added</span>
 			<input class="submit" type="submit" value="Submit" />
 			<span class="submitted" id="submitted">Not submitted</span>
@@ -24,13 +24,27 @@
 		</form>
 	</div>
 
+<!-- Page 2 -->
 	<div id="page2" style="display:none">
-		<ul class="Menu">
-			<li>Data Type</li>
-			<li>Chart Type</li>
-			<li>Classification</li>
-			<li>Add</li>
-		</ul>
+		<div id="selection" class="selection">
+			<label>Data Type: </label>
+            <select id="dataTypeSelect" selected=>
+                <!-- options added after data is imported -->
+            </select>
+			<label>Chart Type: </label>
+            <select id="chartTypeSelect">
+                <option value="1" >Chart1</option>
+                <option value="2" >Chart2</option>
+                <option value="3" >Chart3</option>
+                <option value="4" >Chart4</option>
+                <option value="5" >Chart5</option>
+            </select>
+			<label>Data Groups: </label>
+            <select id="dataGroupSelect">
+                <!-- options added after data imported (cannot choose the same option as the data type) -->
+            </select>
+			<button id="generateChartButton" class="generateChartButton"><!--onclick="generateChart();"-->Generate Chart</button>
+		</div>
 		<a href="#" onclick="return changePage('index', 'page2', true);">Home</a>
 		<script>
 			console.log(data);
@@ -42,14 +56,8 @@
 	<!-- !!!Don't know if this is the correct place/usage of this code!!! -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 	
-	<!--
-	This script places a badge on your repl's full-browser view back to your repl's cover
-	page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
-	teal, blue, blurple, magenta, pink!
-	-->
 	<script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
 	<script src="script.js"></script>
-	
 </body>
 
 </html>

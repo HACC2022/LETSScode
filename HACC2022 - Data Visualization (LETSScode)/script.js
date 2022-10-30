@@ -1,11 +1,10 @@
-//https://dev.to/faddalibrahim/how-to-create-a-custom-file-upload-button-using-html-css-and-javascript-1c03
-//https://sebhastian.com/javascript-csv-to-array/
-
 const fileForm = document.getElementById('fileForm');
 const csvFile = document.getElementById('csvFile');
 const fileChosen = document.getElementById('fileChosen');
+const dataTypeSelect = document.getElementById('dataTypeSelect');
+const dataGroupSelect = document.getElementById('dataGroupSelect');
 var data; //data[0] = header elements, data[1~] = data
-			//ex. data[0][0] = age, data[1][0] = 18
+			//ex. data[0][0] = age, data[1][0] = 18, data[2][0] = 15 ...
 var csvFileAdded = false;
 var csvFileSubmitted = false;
 
@@ -28,6 +27,8 @@ fileForm.addEventListener('submit', function (e) {
 	if (typeof data != 'undefined') {
 		csvFileSubmitted = true;
 	}
+	formSelectionBar();
+	//test
 	console.log(data);
 	console.log(data[0]);
 	console.log(data[0][0]);
@@ -54,3 +55,21 @@ function changePage(appear, hide, ignore=false) {
 		return false;
 	}
 }
+
+function formSelectionBar() {
+	if (csvFileAdded && csvFileSubmitted) {
+		for (var i = 0; i < data[0].length; i++) {
+			addOption(dataTypeSelect, data[0][i], i);
+			addOption(dataGroupSelect, data[0][i], i);
+		}
+	}
+}
+
+function addOption(bar, dataName, dataVal) {
+	var option = document.createElement('option');
+	option.text = dataName;
+	option.value = dataVal;
+	bar.add(option, 0);
+}
+
+//function generateChart() {}

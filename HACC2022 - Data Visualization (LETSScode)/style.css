@@ -16,7 +16,7 @@ h1{
 h4{
 	text-align: center;
 	position: absolute;
-	top: 30%;
+	top: 35%;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
 }
@@ -104,15 +104,10 @@ h4{
 	transition: 0.2s;
 }
 
-.Menu {
-	background: cyan;
+.selection{
+  background: cyan;
 	list-style-type: none;
 	margin: 0;
-	padding: 0;
-	text-align: center;
-}
-
-.Menu li{
-	display: inline-block;
 	padding: 20px;
+	text-align: center;
 }
