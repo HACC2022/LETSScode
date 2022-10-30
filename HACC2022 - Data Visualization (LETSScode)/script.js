@@ -1,3 +1,6 @@
+//import * as Utils from './Utils.js';
+//import * as ChartJS from './ChartJS.js';
+
 const fileForm = document.getElementById('fileForm');
 const csvFile = document.getElementById('csvFile');
 const fileChosen = document.getElementById('fileChosen');
@@ -49,6 +52,8 @@ function changePage(appear, hide, ignore=false) {
 		if (ignore) {
 			csvFileAdded = false;
 			csvFileSubmitted = false;
+			fileChosen.innerHTML = "No file added";
+			submitted.innerHTML = "Not submitted";
 		}
 		document.getElementById(appear).style.display = "block";
 		document.getElementById(hide).style.display = "none";
@@ -72,4 +77,6 @@ function addOption(bar, dataName, dataVal) {
 	bar.add(option, 0);
 }
 
-//function generateChart() {}
+function generateChart() {
+
+}

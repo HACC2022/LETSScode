@@ -33,17 +33,19 @@
             </select>
 			<label>Chart Type: </label>
             <select id="chartTypeSelect">
-                <option value="1" >Chart1</option>
-                <option value="2" >Chart2</option>
-                <option value="3" >Chart3</option>
-                <option value="4" >Chart4</option>
-                <option value="5" >Chart5</option>
+                <option value="1">Bar Chart</option>
+                <option value="2">Line Chart</option>
+                <option value="3">Pie Chart</option>
+                <option value="4">Radar Chart</option>
+                <option value="5">Scatter Chart</option>
             </select>
 			<label>Data Groups: </label>
             <select id="dataGroupSelect">
                 <!-- options added after data imported (cannot choose the same option as the data type) -->
             </select>
-			<button id="generateChartButton" class="generateChartButton"><!--onclick="generateChart();"-->Generate Chart</button>
+			<button id="generateChartButton" class="generateChartButton" onclick="generateChart();">Generate Chart</button>
+			<!-- vw: % width of viewport, vh: % height of viewport -->
+			<canvas id="myChart" width="90vw" height="75vh"></canvas>
 		</div>
 		<a href="#" onclick="return changePage('index', 'page2', true);">Home</a>
 		<script>
@@ -54,9 +56,9 @@
 	
 	<!-- Import chart.js through cdnjs -->
 	<!-- !!!Don't know if this is the correct place/usage of this code!!! -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/Chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	
-	<script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
+	<script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
 	<script src="script.js"></script>
 </body>
 
