@@ -4,8 +4,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Data to Graph Converter</title>
+	<!-- Import chart.js through cdnjs -->
+	<!-- !!!Don't know if this is the correct place/usage of this code!!! -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" defer></script>
+	<script type="module" src="script.js" defer></script>
 	<link href="style.css" rel="stylesheet" type="text/css" />
+	<title>Data to Graph Converter</title>
 </head>
 
 <body>
@@ -27,39 +31,36 @@
 <!-- Page 2 -->
 	<div id="page2" style="display:none">
 		<div id="selection" class="selection">
-			<label>Data Type: </label>
-            <select id="dataTypeSelect" selected=>
+			<label>Data: </label>
+            <select id="dataSelect" selected=>
                 <!-- options added after data is imported -->
+				<option value="null" selected>-select the data below-</option>
             </select>
-			<label>Chart Type: </label>
-            <select id="chartTypeSelect">
-                <option value="1">Bar Chart</option>
-                <option value="2">Line Chart</option>
-                <option value="3">Pie Chart</option>
-                <option value="4">Radar Chart</option>
-                <option value="5">Scatter Chart</option>
+			<label>Chart: </label>
+            <select id="chartSelect">
+				<option value="null" selected>-select the chart below-</option>
+                <option value="0">Bar Chart</option>
+                <option value="1">Line Chart</option>
+                <option value="2">Pie Chart</option>
+                <option value="3">Radar Chart</option>
+                <option value="4">Scatter Chart</option>
             </select>
-			<label>Data Groups: </label>
-            <select id="dataGroupSelect">
+			<label>Label: </label>
+            <select id="labelSelect">
                 <!-- options added after data imported (cannot choose the same option as the data type) -->
+				<option value="null" selected>-select the label below-</option>
+				<option value="void">=NO LABEL=</option>
             </select>
 			<button id="generateChartButton" class="generateChartButton" onclick="generateChart();">Generate Chart</button>
 			<!-- vw: % width of viewport, vh: % height of viewport -->
 			<canvas id="myChart" width="90vw" height="75vh"></canvas>
 		</div>
 		<a href="#" onclick="return changePage('index', 'page2', true);">Home</a>
-		<script>
-			console.log(data);
-		</script>
+		<!-- test --><script>console.log(data);</script>
 	</div>
 	<!--<img src = "https://toppng.com/uploads/preview/blue-round-button-11550128848m21vyjeicp.png"> (How to add a pic)-->
 	
-	<!-- Import chart.js through cdnjs -->
-	<!-- !!!Don't know if this is the correct place/usage of this code!!! -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/Chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	
 	<script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
-	<script src="script.js"></script>
 </body>
 
 </html>

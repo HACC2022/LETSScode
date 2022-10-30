@@ -1,11 +1,11 @@
-//import * as Utils from './Utils.js';
-//import * as ChartJS from './ChartJS.js';
+import { ctx, generateTest, generateBar, generateLine, generatePie, generateRadar, generateScatter } from "./ChartJS.js";
 
 const fileForm = document.getElementById('fileForm');
 const csvFile = document.getElementById('csvFile');
 const fileChosen = document.getElementById('fileChosen');
-const dataTypeSelect = document.getElementById('dataTypeSelect');
-const dataGroupSelect = document.getElementById('dataGroupSelect');
+const dataSelect = document.getElementById('dataSelect');
+const chartSelect =  document.getElementById('chartSelect');
+const labelSelect = document.getElementById('labelSelect');
 var data; //data[0] = header elements, data[1~] = data
 			//ex. data[0][0] = age, data[1][0] = 18, data[2][0] = 15 ...
 var csvFileAdded = false;
@@ -33,11 +33,13 @@ fileForm.addEventListener('submit', function (e) {
 	formSelectionBar();
 	//test
 	console.log(data);
+	console.log(data.length);
 	console.log(data[0]);
+	console.log(data[0].length);
 	console.log(data[0][0]);
 })
 
-function csvToArray(csv, delimiter=",") {
+window.csvToArray = function(csv, delimiter=",") {
 	var array = [];
 	const rows = csv.split("\n");
 	for (var i = 0; i < rows.length; i++) {
@@ -47,7 +49,7 @@ function csvToArray(csv, delimiter=",") {
 	return array;
 }
 
-function changePage(appear, hide, ignore=false) {
+window.changePage = function(appear, hide, ignore=false) {
 	if ((csvFileAdded && csvFileSubmitted) || (ignore)) {
 		if (ignore) {
 			csvFileAdded = false;
@@ -61,22 +63,59 @@ function changePage(appear, hide, ignore=false) {
 	}
 }
 
-function formSelectionBar() {
+window.formSelectionBar = function() {
 	if (csvFileAdded && csvFileSubmitted) {
 		for (var i = 0; i < data[0].length; i++) {
-			addOption(dataTypeSelect, data[0][i], i);
-			addOption(dataGroupSelect, data[0][i], i);
+			addOption(dataSelect, data[0][i], i);
+			addOption(labelSelect, data[0][i], i);
 		}
 	}
 }
 
-function addOption(bar, dataName, dataVal) {
+window.addOption = function(bar, dataName, dataVal) {
 	var option = document.createElement('option');
 	option.text = dataName;
 	option.value = dataVal;
-	bar.add(option, 0);
+	bar.add(option);
 }
 
-function generateChart() {
+window.generateChart = function() {
+	var selectedData = dataSelect.options[dataSelect.selectedIndex].value;
+	var selectedChart = chartSelect.options[chartSelect.selectedIndex].value;
+	var selectedLabel = labelSelect.options[labelSelect.selectedIndex].value;
 
+	if ((selectedData == "null")||(selectedChart == "null")||(selectedLabel == 
+	"null")) {
+		alert("Please select the data type, chart type, and label for your desired chart to be created.");
+		return;
+	}
+
+	var labels = [];
+	if (selectedLabel != "void") {
+		for (var i = 0; i < data.length-1; i++) {
+			labels[i] = data[i+1][selectedLabel];
+		}
+	}
+	var datas = [];
+	for (var i = 0; i < data.length-1; i++) {
+		datas[i] = data[i+1][selectedData];
+	}
+
+	switch(selectedChart) {
+		case "0":
+			generateBar(labels, datas);
+			break;
+		case "1":
+			generateLine(labels, datas);
+			break;
+		case "2":
+			generatePie(labels, datas);
+			break;
+		case "3":
+			generateRadar(labels, datas);
+			break;
+		case "4":
+			generateScatter(labels, datas);
+			break;
+	}
 }
