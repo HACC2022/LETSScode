@@ -54,16 +54,14 @@
 			<button id="generateChartButton" class="generateChartButton" onclick="generateChart();">Generate Chart</button>
 			<button id="newChartButton" class="newChartButton" style="display:none" onclick="resetPage();">New Chart</button>
 			<button id="saveChartButton" class="saveChartButton" style="display:none" onclick="saveChart();">Generate Chart Saving Link</button>
-			<a id="saveChartLink" class="saveChartLink" href="" style="display:none" download>Download (.pdf)</a>
-			<!-- vw: % width of viewport, vh: % height of viewport -->
-			<canvas id="myChart" width="90vw" height="75vh"></canvas>
+			<a id="saveChartLink" class="saveChartLink" href="" style="display:none" download>Download (.png)</a>
+			<!-- vw: % width of viewport, vh: % height of viewport -->	
 		</div>
 		<a href="#" onclick="return changePage('index', 'page2', true);">Home</a>
+		<canvas id="myChart" width="90vw" height="75vh" style="display:none"></canvas>
 		<!-- test --><script>console.log(data);</script>
 	</div>
-	<!--<img src = "https://toppng.com/uploads/preview/blue-round-button-11550128848m21vyjeicp.png"> (How to add a pic)-->
-	
-	<script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
+
 </body>
 
 </html>

@@ -138,6 +138,7 @@ window.generateChart = function() {
 
 	document.getElementById('newChartButton').style.display = "block";
 	document.getElementById('saveChartButton').style.display = "block";
+	canvas.style.display = "block";
 	switch(selectedChart) {
 		case "0":
 			myChart = generateBar(labels, datas, selectedDataName);
@@ -161,6 +162,7 @@ window.resetPage = function() {
 	document.getElementById('newChartButton').style.display = "none";
 	document.getElementById('saveChartButton').style.display = "none";
 	document.getElementById('saveChartLink').style.display = "none";
+	canvas.style.display = "none";
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 	myChart.destroy();
 }
