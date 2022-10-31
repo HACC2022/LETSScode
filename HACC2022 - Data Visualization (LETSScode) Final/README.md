@@ -1,0 +1,2 @@
+LETTSviz is an online data visualization platform that helps NIC agencies to render information in the form of dynamic visualizations tailored to their needs.
+The project is a data visualization website that allows users to convert a CSV file into a visual. The user will first import a CSV file into the website and submit the file. Once submitted, the user will be able to select which data to display, the visual type, and the labels. The different visual types provided to the user include; bar, line, pie, radar, and polar area charts.
