@@ -35,6 +35,14 @@ export function generateBar(labels, datas, selectedDataName) {
                 hoverBorderWidth: 1.5,
                 hoverBorderColor: 'rgba(0, 0, 0, 1)'
             }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            }
         }
     });
     return myChart;
@@ -53,6 +61,14 @@ export function generateLine(labels, datas, selectedDataName) {
                 borderColor: 'rgba(234, 85, 67, 1)',
                 tension: 0.1
             }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            }
         }
     });
     return myChart;
@@ -82,6 +98,14 @@ export function generatePie(labels, datas, selectedDataName) {
                 borderWidth: 0.5,
                 hoverOffset: 4
             }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            }
         }
     });
     return myChart;
@@ -110,6 +134,12 @@ export function generateRadar(labels, datas, selectedDataName) {
                 line: {
                     borderWidth: 3
                 }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
             }
         }
     });
@@ -137,6 +167,14 @@ export function generatePolarArea(labels, datas, selectedDataName) {
                     'rgba(244, 108, 156, 0.2)'
                 ]
             }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            }
         }
     });
     return myChart;

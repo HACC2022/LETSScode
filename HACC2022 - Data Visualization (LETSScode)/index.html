@@ -17,7 +17,7 @@
 	<div id="index">
 		<a href="#" onclick="return changePage('page2', 'index', true);">Page 2</a>
 		<h1>Data to Graph Converter</h1>
-		<h4>Upload your .csv file to turn it into a visible graph to display your information! Add data file, double click the submit button, and proceed to the next page by pressing the last button.</h4>
+		<h4>Upload your .csv file from <a href="https://opendata.hawaii.gov/" target="_blank" rel="noopener noreferrer">Hawaii Open Data</a> to turn it into a visible graph to display your information! Add data file, double click the submit button, and proceed to the next page by pressing the last button.</h4>
 		<form id="fileForm">
 			<input type="file" id="csvFile" accept=".csv" hidden />
 			<button type="button" class="fileButton" id="fileButton" onclick="document.getElementById('csvFile').click()">Add .csv File</button>
@@ -53,8 +53,8 @@
             </select>
 			<button id="generateChartButton" class="generateChartButton" onclick="generateChart();">Generate Chart</button>
 			<button id="newChartButton" class="newChartButton" style="display:none" onclick="resetPage();">New Chart</button>
-			<button id="saveChartButton" class="saveChartButton" style="display:none" onclick="saveChart();">Save Chart (.pdf)</button>
-			<a id="saveChartLink" class="saveChartLink" href="" style="display:none" download>Download</a>
+			<button id="saveChartButton" class="saveChartButton" style="display:none" onclick="saveChart();">Generate Chart Saving Link</button>
+			<a id="saveChartLink" class="saveChartLink" href="" style="display:none" download>Download (.pdf)</a>
 			<!-- vw: % width of viewport, vh: % height of viewport -->
 			<canvas id="myChart" width="90vw" height="75vh"></canvas>
 		</div>
