@@ -109,7 +109,7 @@ canvas{
 }
 
 .selection{
-  background: cyan;
+  	background: cyan;
 	list-style-type: none;
 	margin: 0;
 	padding: 20px;

@@ -1,4 +1,4 @@
-import { ctx, generateTest, generateBar, generateLine, generatePie, generateRadar, generateScatter } from "./ChartJS.js";
+import { generateBar, generateLine, generatePie, generateRadar, generatePolarArea } from "./ChartJS.js";
 
 const fileForm = document.getElementById('fileForm');
 const csvFile = document.getElementById('csvFile');
@@ -79,10 +79,24 @@ window.addOption = function(bar, dataName, dataVal) {
 	bar.add(option);
 }
 
+window.toNum = function(str) {
+	if (typeof str != 'string') {
+		return str;
+	}
+	if (!isNaN(str) && !isNaN(parseFloat(str))) {
+		console.log('parsed');
+		str = parseInt(str);
+		str = Number(str);
+		return str;
+	}
+	return str;
+}
+
 window.generateChart = function() {
 	var selectedData = dataSelect.options[dataSelect.selectedIndex].value;
 	var selectedChart = chartSelect.options[chartSelect.selectedIndex].value;
 	var selectedLabel = labelSelect.options[labelSelect.selectedIndex].value;
+	var selectedDataName = dataSelect.options[dataSelect.selectedIndex].text;
 
 	if ((selectedData == "null")||(selectedChart == "null")||(selectedLabel == 
 	"null")) {
@@ -91,31 +105,49 @@ window.generateChart = function() {
 	}
 
 	var labels = [];
+	var datas = [];
+	var newIdx = 0;
 	if (selectedLabel != "void") {
 		for (var i = 0; i < data.length-1; i++) {
-			labels[i] = data[i+1][selectedLabel];
+			data[i+1][selectedData] = toNum(data[i+1][selectedData]);
+			if (typeof data[i+1][selectedData] != 'number') {
+				continue;
+			}
+			labels[newIdx] = data[i+1][selectedLabel];
+			datas[newIdx] = data[i+1][selectedData];
+			newIdx++;
+		}
+	} else {
+		for (var i = 0; i < data.length-1; i++) {
+			data[i+1][selectedData] = toNum(data[i+1][selectedData]);
+			if (typeof data[i+1][selectedData] != 'number') {
+				continue;
+			}
+			labels[newIdx] = "";
+			datas[newIdx] = data[i+1][selectedData];
+			newIdx++;
 		}
 	}
-	var datas = [];
-	for (var i = 0; i < data.length-1; i++) {
-		datas[i] = data[i+1][selectedData];
+	if (datas.length == 0) {
+		alert("Please select a data type with numbers, not words.");
+		return;
 	}
 
 	switch(selectedChart) {
 		case "0":
-			generateBar(labels, datas);
+			generateBar(labels, datas, selectedDataName);
 			break;
 		case "1":
-			generateLine(labels, datas);
+			generateLine(labels, datas, selectedDataName);
 			break;
 		case "2":
-			generatePie(labels, datas);
+			generatePie(labels, datas, selectedDataName);
 			break;
 		case "3":
-			generateRadar(labels, datas);
+			generateRadar(labels, datas, selectedDataName);
 			break;
 		case "4":
-			generateScatter(labels, datas);
+			generatePolarArea(labels, datas, selectedDataName);
 			break;
 	}
 }

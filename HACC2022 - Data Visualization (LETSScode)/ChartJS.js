@@ -1,102 +1,138 @@
-export const ctx = document.getElementById('myChart').getContext('2d');
+const ctx = document.getElementById('myChart').getContext('2d');
 
-export function generateTest() {
-    const testChart = new Chart(ctx, {
+export function generateBar(labels, datas, selectedDataName) {
+    const title = document.getElementById('csvFile').files.item(0).name;
+    const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: labels,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: selectedDataName,
+                data: datas,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(234, 85, 67, 0.2)',
+                    'rgba(239, 156, 31, 0.2)',
+                    'rgba(237, 190, 48, 0.2)',
+                    'rgba(237, 224, 90, 0.2)',
+                    'rgba(188, 207, 49, 0.2)',
+                    'rgba(133, 187, 68, 0.2)',
+                    'rgba(59, 173, 239, 0.2)',
+                    'rgba(180, 61, 199, 0.2)',
+                    'rgba(244, 108, 156, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(234, 85, 67, 1)',
+                    'rgba(239, 156, 31, 1)',
+                    'rgba(237, 190, 48, 1)',
+                    'rgba(237, 224, 90, 1)',
+                    'rgba(188, 207, 49, 1)',
+                    'rgba(133, 187, 68, 1)',
+                    'rgba(59, 173, 239, 1)',
+                    'rgba(180, 61, 199, 1)',
+                    'rgba(244, 108, 156, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 1,
+                hoverBorderWidth: 1.5,
+                hoverBorderColor: 'rgba(0, 0, 0, 1)'
             }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
         }
     });
 }
 
-export function generateBar(labels, datas) {
+export function generateLine(labels, datas, selectedDataName) {
+    const title = document.getElementById('csvFile').files.item(0).name;
     const myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
-            labels: [],
+            labels: labels,
             datasets: [{
-                label: 'a',
+                label: selectedDataName,
                 data: datas,
-                backgroundColor: [],
-                borderColor: [],
-                borderWidth: 0,
-                hoverBorderWidth: 0,
-                hoverBorderColor: ''
+                fill: false,
+                borderColor: 'rgba(234, 85, 67, 1)',
+                tension: 0.1
+            }]
+        }
+    });
+}
+
+export function generatePie(labels, datas, selectedDataName) {
+    const title = document.getElementById('csvFile').files.item(0).name;
+    const myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: selectedDataName,
+                data: datas,
+                backgroundColor: [
+                    'rgba(234, 85, 67, 0.2)',
+                    'rgba(239, 156, 31, 0.2)',
+                    'rgba(237, 190, 48, 0.2)',
+                    'rgba(237, 224, 90, 0.2)',
+                    'rgba(188, 207, 49, 0.2)',
+                    'rgba(133, 187, 68, 0.2)',
+                    'rgba(59, 173, 239, 0.2)',
+                    'rgba(180, 61, 199, 0.2)',
+                    'rgba(244, 108, 156, 0.2)'
+                ],
+                borderColor: 'rgba(0, 0, 0, 0.5',
+                borderWidth: 0.5,
+                hoverOffset: 4
+            }]
+        }
+    });
+}
+
+export function generateRadar(labels, datas, selectedDataName) {
+    const title = document.getElementById('csvFile').files.item(0).name;
+    const myChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: selectedDataName,
+                data: datas,
+                fill: true,
+                backgroundColor: 'rgba(188, 207, 49, 0.2)',
+                borderColor: 'rgba(188, 207, 49, 1)',
+                pointBackgroundColor: 'rgba(188, 207, 49, 1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(188, 207, 49, 1)'
             }]
         },
         options: {
-            title: {
-                display: true,
-                text: 'a',
-                fontSize: 0
-            },
-            legend: {
-                display: true,
-                position: 'right',
-                labels: {
-                    fontColor: ''
-                }
-            },
-            layout: {
-                padding: {
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    top: 0
+            elements: {
+                line: {
+                    borderWidth: 3
                 }
             }
         }
     });
 }
 
-export function generateLine(labels, datas) {
+export function generatePolarArea(labels, datas, selectedDataName) {
+    const title = document.getElementById('csvFile').files.item(0).name;
     const myChart = new Chart(ctx, {
-        
-    });
-}
-
-export function generatePie(labels, datas) {
-    const myChart = new Chart(ctx, {
-        
-    });
-}
-
-export function generateRadar(labels, datas) {
-    const myChart = new Chart(ctx, {
-        
-    });
-}
-
-export function generateScatter(labels, datas) {
-    const myChart = new Chart(ctx, {
-        
+        type: 'polarArea',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: selectedDataName,
+                data: datas,
+                backgroundColor: [
+                    'rgba(234, 85, 67, 0.2)',
+                    'rgba(239, 156, 31, 0.2)',
+                    'rgba(237, 190, 48, 0.2)',
+                    'rgba(237, 224, 90, 0.2)',
+                    'rgba(188, 207, 49, 0.2)',
+                    'rgba(133, 187, 68, 0.2)',
+                    'rgba(59, 173, 239, 0.2)',
+                    'rgba(180, 61, 199, 0.2)',
+                    'rgba(244, 108, 156, 0.2)'
+                ]
+            }]
+        }
     });
 }
