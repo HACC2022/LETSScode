@@ -37,6 +37,7 @@ export function generateBar(labels, datas, selectedDataName) {
             }]
         }
     });
+    return myChart;
 }
 
 export function generateLine(labels, datas, selectedDataName) {
@@ -54,6 +55,7 @@ export function generateLine(labels, datas, selectedDataName) {
             }]
         }
     });
+    return myChart;
 }
 
 export function generatePie(labels, datas, selectedDataName) {
@@ -82,6 +84,7 @@ export function generatePie(labels, datas, selectedDataName) {
             }]
         }
     });
+    return myChart;
 }
 
 export function generateRadar(labels, datas, selectedDataName) {
@@ -110,6 +113,7 @@ export function generateRadar(labels, datas, selectedDataName) {
             }
         }
     });
+    return myChart;
 }
 
 export function generatePolarArea(labels, datas, selectedDataName) {
@@ -135,4 +139,5 @@ export function generatePolarArea(labels, datas, selectedDataName) {
             }]
         }
     });
+    return myChart;
 }

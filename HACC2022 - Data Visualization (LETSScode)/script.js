@@ -6,8 +6,11 @@ const fileChosen = document.getElementById('fileChosen');
 const dataSelect = document.getElementById('dataSelect');
 const chartSelect =  document.getElementById('chartSelect');
 const labelSelect = document.getElementById('labelSelect');
+const canvas = document.getElementById('myChart');
+const ctx = canvas.getContext('2d');
 var data; //data[0] = header elements, data[1~] = data
 			//ex. data[0][0] = age, data[1][0] = 18, data[2][0] = 15 ...
+var myChart;
 var csvFileAdded = false;
 var csvFileSubmitted = false;
 
@@ -133,21 +136,36 @@ window.generateChart = function() {
 		return;
 	}
 
+	document.getElementById('newChartButton').style.display = "block";
+	document.getElementById('saveChartButton').style.display = "block";
 	switch(selectedChart) {
 		case "0":
-			generateBar(labels, datas, selectedDataName);
+			myChart = generateBar(labels, datas, selectedDataName);
 			break;
 		case "1":
-			generateLine(labels, datas, selectedDataName);
+			myChart = generateLine(labels, datas, selectedDataName);
 			break;
 		case "2":
-			generatePie(labels, datas, selectedDataName);
+			myChart = generatePie(labels, datas, selectedDataName);
 			break;
 		case "3":
-			generateRadar(labels, datas, selectedDataName);
+			myChart = generateRadar(labels, datas, selectedDataName);
 			break;
 		case "4":
-			generatePolarArea(labels, datas, selectedDataName);
+			myChart = generatePolarArea(labels, datas, selectedDataName);
 			break;
 	}
+}
+
+window.resetPage = function() {
+	document.getElementById('newChartButton').style.display = "none";
+	document.getElementById('saveChartButton').style.display = "none";
+	document.getElementById('saveChartLink').style.display = "none";
+	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+	myChart.destroy();
+}
+
+window.saveChart = function() {
+	document.getElementById('saveChartLink').href = canvas.toDataURL('png');
+	document.getElementById('saveChartLink').style.display = "block";
 }

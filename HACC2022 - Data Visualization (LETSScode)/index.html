@@ -52,6 +52,9 @@
 				<option value="void">=NO LABEL=</option>
             </select>
 			<button id="generateChartButton" class="generateChartButton" onclick="generateChart();">Generate Chart</button>
+			<button id="newChartButton" class="newChartButton" style="display:none" onclick="resetPage();">New Chart</button>
+			<button id="saveChartButton" class="saveChartButton" style="display:none" onclick="saveChart();">Save Chart (.pdf)</button>
+			<a id="saveChartLink" class="saveChartLink" href="" style="display:none" download>Download</a>
 			<!-- vw: % width of viewport, vh: % height of viewport -->
 			<canvas id="myChart" width="90vw" height="75vh"></canvas>
 		</div>
