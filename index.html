@@ -31,7 +31,7 @@
 	<div id="page2" style="display:none">
 		<div id="selection" class="selection">
 			<label>Data: </label>
-            <select id="dataSelect" selected=>
+            <select id="dataSelect">
                 <!-- options added after data is imported -->
 				<option value="null" selected>-select the data below-</option>
             </select>
@@ -54,9 +54,9 @@
 			<button id="newChartButton" class="newChartButton" style="display:none" onclick="resetPage();">New Chart</button>
 			<button id="saveChartButton" class="saveChartButton" style="display:none" onclick="saveChart();">Generate Chart Saving Link</button>
 			<a id="saveChartLink" class="saveChartLink" href="" style="display:none" download>Download (.png)</a>
-			<!-- vw: % width of viewport, vh: % height of viewport -->	
+			<button class="homeButton" onclick="changePage('index', 'page2', true); returnHome();">Home</button>
 		</div>
-		<a href="#" onclick="return changePage('index', 'page2', true);">Home</a>
+		<!-- vw: % width of viewport, vh: % height of viewport -->			
 		<canvas id="myChart" width="90vw" height="75vh" style="display:none"></canvas>
 		<!-- test --><script>console.log(data);</script>
 	</div>
