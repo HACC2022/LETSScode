@@ -113,6 +113,8 @@ window.generateChart = function() {
 	var selectedChart = chartSelect.options[chartSelect.selectedIndex].value;
 	var selectedLabel = labelSelect.options[labelSelect.selectedIndex].value;
 	var selectedDataName = dataSelect.options[dataSelect.selectedIndex].text;
+	labels = [];
+	datas = [];
 
 	if ((selectedData == "null")||(selectedChart == "null")||(selectedLabel == 
 	"null")) {
