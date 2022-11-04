@@ -21,7 +21,15 @@ csvFile.addEventListener('change', function () {
 	submitted.innerHTML = "Not submitted";
 	csvFileAdded = true;
 	csvFileSubmitted = false;
-	returnHome();
+	for (var i = dataSelect.length-1; i > 0; i--) {
+		dataSelect.remove(i);
+	}
+	for (var i = labelSelect.length-1; i > 1; i--) {
+		labelSelect.remove(i);
+	}
+	datas = [];
+	labels = [];
+	data = undefined;
 })
 
 fileForm.addEventListener('submit', function (e) {
@@ -38,7 +46,6 @@ fileForm.addEventListener('submit', function (e) {
 	if (typeof data != 'undefined') {
 		csvFileSubmitted = true;
 	}
-	formSelectionBar();
 	//test
 	console.log(data);
 	console.log(data.length);
@@ -64,6 +71,8 @@ window.changePage = function(appear, hide, ignore=false) {
 			csvFileSubmitted = false;
 			fileChosen.innerHTML = "No file added";
 			submitted.innerHTML = "Not submitted";
+		} else {
+			formSelectionBar();
 		}
 		document.getElementById(appear).style.display = "block";
 		document.getElementById(hide).style.display = "none";
@@ -185,4 +194,5 @@ window.returnHome = function() {
 	datas = [];
 	labels = [];
 	data = undefined;
+	csvFile.value = null;
 }
