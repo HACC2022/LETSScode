@@ -13,10 +13,15 @@ var data; //data[0] = header elements, data[1~] = data
 var myChart;
 var csvFileAdded = false;
 var csvFileSubmitted = false;
+var datas = [];
+var labels = [];
 
 csvFile.addEventListener('change', function () {
 	fileChosen.innerHTML = csvFile.files.item(0).name;
+	submitted.innerHTML = "Not submitted";
 	csvFileAdded = true;
+	csvFileSubmitted = false;
+	returnHome();
 })
 
 fileForm.addEventListener('submit', function (e) {
@@ -62,7 +67,6 @@ window.changePage = function(appear, hide, ignore=false) {
 		}
 		document.getElementById(appear).style.display = "block";
 		document.getElementById(hide).style.display = "none";
-		return false;
 	}
 }
 
@@ -107,8 +111,6 @@ window.generateChart = function() {
 		return;
 	}
 
-	var labels = [];
-	var datas = [];
 	var newIdx = 0;
 	if (selectedLabel != "void") {
 		for (var i = 0; i < data.length-1; i++) {
@@ -162,12 +164,25 @@ window.resetPage = function() {
 	document.getElementById('newChartButton').style.display = "none";
 	document.getElementById('saveChartButton').style.display = "none";
 	document.getElementById('saveChartLink').style.display = "none";
-	canvas.style.display = "none";
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 	myChart.destroy();
+	canvas.style.display = "none";
 }
 
 window.saveChart = function() {
 	document.getElementById('saveChartLink').href = canvas.toDataURL('png');
 	document.getElementById('saveChartLink').style.display = "block";
+}
+
+window.returnHome = function() {
+	resetPage();
+	for (var i = dataSelect.length-1; i > 0; i--) {
+		dataSelect.remove(i);
+	}
+	for (var i = labelSelect.length-1; i > 1; i--) {
+		labelSelect.remove(i);
+	}
+	datas = [];
+	labels = [];
+	data = undefined;
 }
